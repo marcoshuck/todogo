@@ -1,5 +1,6 @@
 package main
 
+// Service represents a generic REST service
 type Service interface {
 	Add(entity interface{}) (interface{}, Error)
 	FindOne(uuid string) (interface{}, Error)
