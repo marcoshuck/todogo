@@ -1,9 +1,9 @@
 package main
 
 type Controller interface {
-	Create() (interface{}, Error)
-	Read() (interface{}, Error)
+	Create(entity interface{}) (interface{}, Error)
+	Read(uuid string) (interface{}, Error)
 	ReadAll() ([]interface{}, Error)
-	Update() (interface{}, Error)
-	Delete() (interface{}, Error)
+	Update(uuid string, entity interface{}) (interface{}, Error)
+	Delete(uuid string) (interface{}, Error)
 }
