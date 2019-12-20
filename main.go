@@ -1,4 +1,4 @@
-package todogo
+package main
 
 import "fmt"
 

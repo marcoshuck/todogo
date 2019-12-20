@@ -1,4 +1,4 @@
-package todogo
+package main
 
 type Service interface {
 	Add()
