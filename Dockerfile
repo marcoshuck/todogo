@@ -1,9 +1,15 @@
-FROM golang:alpine
-RUN mkdir -p /go/src/github.com/marcoshuck/todogo
-COPY . /go/src/github.com/marcoshuck/todogo
-WORKDIR /go/src/github.com/marcoshuck/todogo
+# Builder --
+FROM golang:latest as builder
+LABEL maintainer="Marcos Huck <marcos@huck.com.ar>"
+WORKDIR /go/src/app
+COPY . .
+RUN go get -d -v ./...
+RUN go install -v ./...
 
-RUN go build
-CMD['todogo']
-
+# Runner --
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+COPY --from=builder /go/bin/app .
 EXPOSE 3000
+CMD ["./main"]
