@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/marcoshuck/todogo/database"
 	"github.com/marcoshuck/todogo/errors"
 	"github.com/marcoshuck/todogo/logger"
@@ -30,11 +29,10 @@ func main() {
 
 	srv := server.New(r, "127.0.0.1", "8080")
 
+	log.Info("Listening TO-DO API Rest on 127.0.0.1:8080")
 	err = server.Listen(srv)
 	if err != nil {
 		log.Error(*err)
 	}
-
-	fmt.Println("Listening and serving http server")
 	return
 }

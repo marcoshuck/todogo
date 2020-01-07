@@ -28,10 +28,10 @@ func New(router *router.Router, address string, port string) *http.Server {
 	return server
 }
 
-// Listen returns an error if the server could not listen.
+// Listen returns an error if the server could not be served.
 func Listen(server *http.Server) *errors.Error {
 	if err := server.ListenAndServe(); err != nil {
-		return errors.New(0, 0, "Cannot listen to HTTP server", &err)
+		return errors.New(0, 0, "Server is not listening, quitting...", &err)
 	}
 	return nil
 }
