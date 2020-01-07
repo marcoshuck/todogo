@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"fmt"
 	"github.com/marcoshuck/todogo/errors"
 	"log"
 	"os"
@@ -60,8 +59,7 @@ func (l *Logger) Debug(message string) {
 // Error prints an error message.
 func (l *Logger) Error(err errors.Error) {
 	instance.SetPrefix("[ERROR] ")
-	instance.Println(fmt.Sprintf("[Error] Status: %d | Code: %d | Message: %s", err.Status, err.Code, err.Message))
-	instance.Println(fmt.Sprintf("Stack trace: %v", err.Base))
+	instance.Panicf("[Error] Status: %d | Code: %d | Message: %s\nStack trace: %v", err.Status, err.Code, err.Message, err.Base)
 }
 
 // Info prints an information message.
@@ -73,5 +71,5 @@ func (l *Logger) Info(message string) {
 // Warn prints a warning message.
 func (l *Logger) Warn(message string) {
 	instance.SetPrefix("[WARNING] ")
-	instance.Println(message)
+	instance.Panicln(message)
 }
