@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func New(router router.Router, address string, port string) *http.Server {
+func New(router *router.Router, address string, port string) *http.Server {
 	server := &http.Server{
 		Addr:              fmt.Sprintf("%s:%s", address, port),
 		Handler:           router,
