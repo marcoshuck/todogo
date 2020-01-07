@@ -29,7 +29,7 @@ func New(router *router.Router, address string, port string) *http.Server {
 
 func Listen(server *http.Server) *errors.Error {
 	if err := server.ListenAndServe(); err != nil {
-		return errors.NewError(0, 0, "Cannot listen to HTTP server", &err)
+		return errors.New(0, 0, "Cannot listen to HTTP server", &err)
 	}
 	return nil
 }
