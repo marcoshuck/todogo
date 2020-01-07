@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// New returns a new http server
 func New(router *router.Router, address string, port string) *http.Server {
 	server := &http.Server{
 		Addr:              fmt.Sprintf("%s:%s", address, port),
@@ -27,6 +28,7 @@ func New(router *router.Router, address string, port string) *http.Server {
 	return server
 }
 
+// Listen returns an error if the server could not listen.
 func Listen(server *http.Server) *errors.Error {
 	if err := server.ListenAndServe(); err != nil {
 		return errors.New(0, 0, "Cannot listen to HTTP server", &err)
