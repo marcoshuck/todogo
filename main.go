@@ -10,27 +10,29 @@ import (
 )
 
 func main() {
-	fmt.Println("TO-DO API Rest")
 	var err *errors.Error
 	var log *logger.Logger
+	log = logger.GetInstance()
 
-	fmt.Println("Setting database up.")
+	log.Info("TO-DO API Rest")
+
+	log.Info("Setting database up.")
 	db, err := database.New()
 	if err != nil {
-		fmt.Println(fmt.Sprintf("[Error] Status: %d | Code: %d | Message: %s", err.Status, err.Code, err.Message))
-		fmt.Println(fmt.Sprintf("Stack trace: %v", err.Base))
+		log.Error(*err)
 	}
 	defer database.Close(db)
 
-	fmt.Println("Setting router up.")
+	log.Info("Setting router up.")
 	r := router.New()
 
-	fmt.Println("Setting http server up.")
+	log.Info("Setting http server up.")
+
 	srv := server.New(r, "127.0.0.1", "8080")
+
 	err = server.Listen(srv)
 	if err != nil {
-		fmt.Println(fmt.Sprintf("[Error] Status: %d | Code: %d | Message: %s", err.Status, err.Code, err.Message))
-		fmt.Println(fmt.Sprintf("Stack trace: %v", err.Base))
+		log.Error(*err)
 	}
 
 	fmt.Println("Listening and serving http server")
