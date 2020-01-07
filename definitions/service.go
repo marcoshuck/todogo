@@ -1,4 +1,4 @@
-package main
+package definitions
 
 // Service represents a generic REST service
 type Service interface {
