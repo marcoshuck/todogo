@@ -1,12 +1,11 @@
 package definitions
 
-import "time"
+import (
+	"github.com/marcoshuck/todogo/database"
+)
 
 // Entity represents a generic entity to be used by Controllers and Services
 type Entity struct {
-	ID int64
-	Uuid string
-	CreatedAt time.Time
-	UpdatedAt time.Time
-	DeletedAt time.Time
+	database.Model
+	UUID string
 }
