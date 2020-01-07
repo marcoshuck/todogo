@@ -5,10 +5,12 @@ import (
 	"github.com/marcoshuck/todogo/errors"
 )
 
+// DB defines a database
 type DB struct {
 	*gorm.DB
 }
 
+// New open a new database connection
 func New() (*DB, *errors.Error) {
 	db, err := gorm.Open("sqlite3", "todo.db")
 
@@ -21,6 +23,7 @@ func New() (*DB, *errors.Error) {
 	}, nil
 }
 
+// Close closes a database connection
 func Close(db *DB) *errors.Error {
 	err := db.Close()
 	if err != nil {
