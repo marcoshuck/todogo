@@ -2,18 +2,18 @@ package database
 
 import (
 	"github.com/jinzhu/gorm"
-	d "github.com/marcoshuck/todogo/definitions"
+	"github.com/marcoshuck/todogo/errors"
 )
 
 type DB struct {
 	*gorm.DB
 }
 
-func New() (*DB, *d.Error) {
+func New() (*DB, *errors.Error) {
 	db, err := gorm.Open("sqlite3", "todo.db")
 
 	if err != nil {
-		return nil, d.NewError(0, 501, "Cannot open database", &err)
+		return nil, errors.NewError(0, 501, "Cannot open database", &err)
 	}
 
 	return &DB{
@@ -21,10 +21,10 @@ func New() (*DB, *d.Error) {
 	}, nil
 }
 
-func Close(db *DB) *d.Error {
+func Close(db *DB) *errors.Error {
 	err := db.Close()
 	if err != nil {
-		return d.NewError(0, 501, "Cannot close database", &err)
+		return errors.NewError(0, 501, "Cannot close database", &err)
 	}
 	return nil
 }

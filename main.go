@@ -11,7 +11,7 @@ func main() {
 	fmt.Println("TO-DO API Rest")
 
 	fmt.Println("Setting database up.")
-	db := database.New()
+	db, err := database.New()
 	defer database.Close(db)
 
 	fmt.Println("Setting router up.")
