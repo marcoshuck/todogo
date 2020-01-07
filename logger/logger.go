@@ -1,6 +1,8 @@
 package logger
 
 import (
+	"fmt"
+	"github.com/marcoshuck/todogo/errors"
 	"log"
 	"os"
 	"sync"
@@ -43,9 +45,10 @@ func (l *Logger) Debug(message string) {
 	instance.Println(message)
 }
 
-func (l *Logger) Error(message string) {
+func (l *Logger) Error(err errors.Error) {
 	instance.SetPrefix("[ERROR] ")
-	instance.Println(message)
+	instance.Println(fmt.Sprintf("[Error] Status: %d | Code: %d | Message: %s", err.Status, err.Code, err.Message))
+	instance.Println(fmt.Sprintf("Stack trace: %v", err.Base))
 }
 
 func (l *Logger) Info(message string) {

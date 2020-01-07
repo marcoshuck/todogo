@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/marcoshuck/todogo/database"
 	"github.com/marcoshuck/todogo/errors"
+	"github.com/marcoshuck/todogo/logger"
 	"github.com/marcoshuck/todogo/router"
 	"github.com/marcoshuck/todogo/server"
 )
@@ -11,6 +12,7 @@ import (
 func main() {
 	fmt.Println("TO-DO API Rest")
 	var err *errors.Error
+	var log *logger.Logger
 
 	fmt.Println("Setting database up.")
 	db, err := database.New()
