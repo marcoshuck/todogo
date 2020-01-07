@@ -1,4 +1,4 @@
-package main
+package definitions
 
 // Controller represents a generic REST controller
 type Controller interface {
