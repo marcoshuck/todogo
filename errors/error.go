@@ -8,7 +8,8 @@ type Error struct {
 	Base *error
 }
 
-func NewError(code int64, status int64, message string, base *error) *Error {
+// New returns a new application error
+func New(code int64, status int64, message string, base *error) *Error {
 	return &Error{
 		Code:    code,
 		Status:  status,
