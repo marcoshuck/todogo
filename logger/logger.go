@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"fmt"
 	"github.com/marcoshuck/todogo/errors"
 	"log"
 	"os"
@@ -38,10 +39,15 @@ func GetInstance() *Logger {
 	return instance
 }
 
+// FormatErrorMessage converts an err instance to an error message
+func (l *Logger) FormatErrorMessage(err errors.Error) string {
+	return fmt.Sprintf("Code: %d | Status: %d | Message: %s", err.Code, err.Status, err.Message)
+}
+
 // Log prints a log message.
-func (l *Logger) Log(message string) {
+func (l *Logger) Log(a ...interface{}) {
 	instance.SetPrefix("[LOG] ")
-	instance.Println(message)
+	instance.Println(a)
 }
 
 // Assert prints the result of a boolean condition.
@@ -51,25 +57,25 @@ func (l *Logger) Assert(condition bool) {
 }
 
 // Debug prints a debug message.
-func (l *Logger) Debug(message string) {
+func (l *Logger) Debug(a ...interface{}) {
 	instance.SetPrefix("[DEBUG] ")
-	instance.Println(message)
+	instance.Println(a)
 }
 
 // Error prints an error message.
-func (l *Logger) Error(err errors.Error) {
+func (l *Logger) Error(a ...interface{}) {
 	instance.SetPrefix("[ERROR] ")
-	instance.Panicf("[Error] Status: %d | Code: %d | Message: %s\nStack trace: %v", err.Status, err.Code, err.Message, err.Base)
+	instance.Panicln(a)
 }
 
 // Info prints an information message.
-func (l *Logger) Info(message string) {
+func (l *Logger) Info(a ...interface{}) {
 	instance.SetPrefix("[INFO] ")
-	instance.Println(message)
+	instance.Println(a)
 }
 
 // Warn prints a warning message.
-func (l *Logger) Warn(message string) {
+func (l *Logger) Warn(a ...interface{}) {
 	instance.SetPrefix("[WARNING] ")
-	instance.Panicln(message)
+	instance.Println(a)
 }
