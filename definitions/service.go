@@ -15,4 +15,3 @@ type ServiceMethods interface {
 	Update(uuid string, entity interface{}) (interface{}, *errors.Error)
 	Delete(uuid string) (interface{}, *errors.Error)
 }
-
