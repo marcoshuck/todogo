@@ -2,8 +2,12 @@ package definitions
 
 import "github.com/marcoshuck/todogo/errors"
 
-// Service represents a generic REST service
-type Service interface {
+type Service struct {
+	serviceName string
+}
+
+// ServiceMethods represents a set of generic REST service methods
+type ServiceMethods interface {
 	Add(entity interface{}) (interface{}, *errors.Error)
 	FindOne(uuid string) (interface{}, *errors.Error)
 	FindAll() ([]interface{}, *errors.Error)
