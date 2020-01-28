@@ -8,31 +8,31 @@ import (
 type ApplicationController def.Controller
 
 func (app *ApplicationController) Create(w http.ResponseWriter, r *http.Request) {
-	app.Service.Count()
+	(*app.Service).Count()
 	w.WriteHeader(http.StatusOK)
 }
 
 func (app *ApplicationController) Read(w http.ResponseWriter, r *http.Request) {
-	app.Service.Count()
+	(*app.Service).Count()
 	w.WriteHeader(http.StatusOK)
 }
 
 func (app *ApplicationController) ReadAll(w http.ResponseWriter, r *http.Request) {
-	app.Service.Count()
+	(*app.Service).Count()
 	w.WriteHeader(http.StatusOK)
 }
 
 func (app *ApplicationController) Count(w http.ResponseWriter, r *http.Request) {
-	app.Service.Count()
+	(*app.Service).Count()
 	w.WriteHeader(http.StatusOK)
 }
 
 func (app *ApplicationController) Update(w http.ResponseWriter, r *http.Request) {
-	app.Service.Count()
+	(*app.Service).Count()
 	w.WriteHeader(http.StatusOK)
 }
 
 func (app *ApplicationController) Delete(w http.ResponseWriter, r *http.Request) {
-	app.Service.Count()
+	(*app.Service).Count()
 	w.WriteHeader(http.StatusOK)
 }

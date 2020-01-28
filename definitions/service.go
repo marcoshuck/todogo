@@ -3,7 +3,7 @@ package definitions
 import "github.com/marcoshuck/todogo/errors"
 
 type Service struct {
-	serviceName string
+	ServiceName string
 }
 
 // ServiceMethods represents a set of generic REST service methods
