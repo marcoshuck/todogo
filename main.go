@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/marcoshuck/todogo/app"
 	"github.com/marcoshuck/todogo/database"
 	"github.com/marcoshuck/todogo/errors"
 	log "github.com/marcoshuck/todogo/logger"
@@ -25,6 +26,8 @@ func main() {
 
 	logger.Info("Setting router up.")
 	r := router.New()
+
+	r.Register(&app.ApplicationModule)
 
 	logger.Info("Setting http server up.")
 
