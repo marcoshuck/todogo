@@ -5,7 +5,8 @@ import (
 )
 
 type Controller struct {
-	controllerName string
+	ControllerName string
+	Service ServiceMethods
 }
 
 // ControllerMethods represents a set of generic REST controller methods
