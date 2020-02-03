@@ -4,6 +4,6 @@ package definitions
 type Module struct {
 	Route *Route
 	Entity *Entity
-	Controller *Controller
-	Service *Service
+	Controller *ControllerMethods
+	Service *ServiceMethods
 }
