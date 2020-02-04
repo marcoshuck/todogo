@@ -7,7 +7,7 @@ services:
       - cache
   db:
     container_name: "db"
-    image: mysql
+    image: postgres:alpine
   cache:
     container_name: "cache"
     image: redis
