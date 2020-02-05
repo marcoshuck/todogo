@@ -10,4 +10,4 @@ services:
     image: postgres:alpine
   cache:
     container_name: "cache"
-    image:
+    image: redis
