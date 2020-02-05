@@ -47,7 +47,7 @@ func (l *Logger) FormatErrorMessage(err errors.Error) string {
 // Log prints a log message.
 func (l *Logger) Log(a ...interface{}) {
 	instance.SetPrefix("[LOG] ")
-	instance.Println(a)
+	instance.Println(a...)
 }
 
 // Assert prints the result of a boolean condition.
@@ -59,23 +59,23 @@ func (l *Logger) Assert(condition bool) {
 // Debug prints a debug message.
 func (l *Logger) Debug(a ...interface{}) {
 	instance.SetPrefix("[DEBUG] ")
-	instance.Println(a)
+	instance.Println(a...)
 }
 
 // Error prints an error message.
 func (l *Logger) Error(a ...interface{}) {
 	instance.SetPrefix("[ERROR] ")
-	instance.Panicln(a)
+	instance.Panicln(a...)
 }
 
 // Info prints an information message.
 func (l *Logger) Info(a ...interface{}) {
 	instance.SetPrefix("[INFO] ")
-	instance.Println(a)
+	instance.Println(a...)
 }
 
 // Warn prints a warning message.
 func (l *Logger) Warn(a ...interface{}) {
 	instance.SetPrefix("[WARNING] ")
-	instance.Println(a)
+	instance.Println(a...)
 }
