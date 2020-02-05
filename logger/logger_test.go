@@ -25,10 +25,60 @@ func TestLogger_GetInstance_SamePointer(t *testing.T) {
 	ass.Equal(instanceLogger1, instanceLogger2)
 }
 
-func TestLogger_LogPrepend(t *testing.T) {
+func TestLogger_CheckLogPrefix(t *testing.T) {
 	ass := assert.New(t)
 	logger := GetInstance()
 	log := "test log"
 	logger.Log(log)
 	ass.Equal("[LOG] ", logger.Prefix())
 }
+
+func TestLogger_CheckAssertPrefix(t *testing.T) {
+	ass := assert.New(t)
+	logger := GetInstance()
+
+	logger.Assert(true)
+	ass.Equal("[ASSERT] ", logger.Prefix())
+}
+
+func TestLogger_CheckDebugPrefix(t *testing.T) {
+	ass := assert.New(t)
+	logger := GetInstance()
+
+	logger.Debug("Test")
+	ass.Equal("[DEBUG] ", logger.Prefix())
+}
+
+func TestLogger_CheckErrorPrefix(t *testing.T) {
+	ass := assert.New(t)
+	logger := GetInstance()
+
+	ass.Panics(func() {logger.Error("Log error")})
+	ass.Equal("[ERROR] ", logger.Prefix())
+}
+
+func TestLogger_CheckPanicWithMessage(t *testing.T) {
+	ass    := assert.New(t)
+	logger := GetInstance()
+
+	log := "error log"
+	ass.PanicsWithValue(log, func() {logger.Error(log)})
+
+}
+
+func TestLogger_CheckInfoPrefix(t *testing.T) {
+	ass := assert.New(t)
+	logger := GetInstance()
+
+	logger.Info("Info test")
+	ass.Equal("[INFO] ", logger.Prefix())
+}
+
+func TestLogger_CheckWarnPrefix(t *testing.T) {
+	ass := assert.New(t)
+	logger := GetInstance()
+
+	logger.Warn("Info warn")
+	ass.Equal("[WARNING] ", logger.Prefix())
+}
+
