@@ -1,15 +1,16 @@
 # Builder --
 FROM golang:latest as builder
 LABEL maintainer="Marcos Huck <marcos@huck.com.ar>"
-WORKDIR /go/src/app
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
 COPY . .
-RUN go get -d -v ./...
-RUN go install -v ./...
+RUN go build -o main .
 
 # Runner --
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
-COPY --from=builder /go/bin/app .
+COPY --from=builder /app .
 EXPOSE 3000
 CMD ["./main"]

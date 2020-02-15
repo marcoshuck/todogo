@@ -1,0 +1,18 @@
+version: "3"
+services:
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    env_file:
+      - app.env
+  db:
+    ports:
+      - 3306:3306
+    env_file:
+      - db.env
+  cache:
+    ports:
+      - 5432:5432
+    env_file:
+      - redis.env
